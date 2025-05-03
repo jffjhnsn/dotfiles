@@ -1,0 +1,7 @@
+;;-*-coding: utf-8;-*-
+(define-abbrev-table 'global-abbrev-table
+  '(
+    ("Ne" "Next actions: " nil :count 0)
+    ("pg" "progressive" nil :count 0)
+   ))
+
