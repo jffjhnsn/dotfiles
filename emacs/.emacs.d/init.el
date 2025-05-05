@@ -25,6 +25,8 @@
       make-backup-files nil
       ;; Make it easy to cycle through previous items in the mark ring
       set-mark-command-repeat-pop t
+      ;; Revert Dired and other buffers
+      global-auto-revert-non-file-buffers t
       )
 
 ;; Core modes
@@ -35,6 +37,7 @@
 (set-fringe-mode 5)
 (column-number-mode 1)
 (global-visual-line-mode 1)
+(global-auto-revert-mode 1)
 
 ;; Smooth scrolling
 (setq scroll-conservatively 10
