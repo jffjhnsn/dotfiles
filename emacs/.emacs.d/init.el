@@ -28,14 +28,12 @@
       )
 
 ;; Core modes
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(tooltip-mode -1)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+(tooltip-mode 0)
+(menu-bar-mode 0)
 (set-fringe-mode 5)
-
-(menu-bar-mode -1)
-
-(column-number-mode)
+(column-number-mode 1)
 
 ;; Smooth scrolling
 (setq scroll-conservatively 10
