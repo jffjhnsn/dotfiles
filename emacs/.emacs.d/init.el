@@ -54,6 +54,9 @@
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; Delete trailing whitespace before saving buffers
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;; Fonts
 
 (set-face-attribute 'default nil :font "Jetbrains Mono" :height joj/default-font-size)
