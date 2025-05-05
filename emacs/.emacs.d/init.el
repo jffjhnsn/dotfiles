@@ -34,6 +34,7 @@
 (tool-bar-mode 0)
 (tooltip-mode 0)
 (menu-bar-mode 0)
+(save-hist-mode 1)          ;; Save mini-buffer history
 (set-fringe-mode 5)
 (column-number-mode 1)
 (auto-save-visited-mode 1)  ;; Auto-save files at an interval
