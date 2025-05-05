@@ -247,6 +247,14 @@
   :commands (magit-status)
   :ensure t)
 
+(defun joj/dotfiles-magit-status ()
+  "Open a Magit status buffer for my ~/.dotfiles repo."
+  (interactive)
+  (magit-status-setup-buffer (expand-file-name "~/.dotfiles/")))
+
+(global-set-key (kbd "C-c g d") #'joj/dotfiles-magit-status)
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
