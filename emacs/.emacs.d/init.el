@@ -151,7 +151,7 @@
 		  (org-level-7 . 1.1)
 		  (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil :font "Jetbrains Mono" :weight 'regular :height (cdr face))))
-    
+
 (defun joj/org-mode-setup ()
   (org-indent-mode))
 
@@ -258,9 +258,20 @@
   "Open a Magit status buffer for my ~/.dotfiles repo."
   (interactive)
   (magit-status-setup-buffer (expand-file-name "~/.dotfiles/")))
-
 (global-set-key (kbd "C-c g d") #'joj/dotfiles-magit-status)
 
+(defun joj/acta-magit-status ()
+  "Open a Magit status buffer for the  ~/dev/automated-customer-text-analyzer repo."
+  (interactive)
+  (magit-status-setup-buffer (expand-file-name "~/dev/automated-customer-text-analyzer/")))
+(global-set-key (kbd "C-c g a") #'joj/acta-magit-status)
+
+
+(defun joj/case-cruncher-magit-status ()
+  "Open a Magit status buffer for the ~/dev/cuca-case-cruncher repo."
+  (interactive)
+  (magit-status-setup-buffer (expand-file-name "~/dev/cuca-case-cruncher/")))
+(global-set-key (kbd "C-c g c") #'joj/case-cruncher-magit-status)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
