@@ -17,10 +17,17 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-;; UI Configuration
+;; Core settings
+(setq inhibit-startup-message t
+      ;; Instruct auto-save-mode to save to the current file, not a backup file
+      auto-save-default nil
+      ;; No backup files
+      make-backup-files nil
+      ;; Make it easy to cycle through previous items in the mark ring
+      set-mark-command-repeat-pop t
+      )
 
-(setq inhibit-startup-message t)
-
+;; Core modes
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
