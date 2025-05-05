@@ -36,6 +36,7 @@
 (menu-bar-mode 0)
 (set-fringe-mode 5)
 (column-number-mode 1)
+(auto-save-visited-mode 1)  ;; Auto-save files at an interval
 (global-visual-line-mode 1)
 (global-auto-revert-mode 1)
 
