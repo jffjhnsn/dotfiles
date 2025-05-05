@@ -34,6 +34,7 @@
 (menu-bar-mode 0)
 (set-fringe-mode 5)
 (column-number-mode 1)
+(global-visual-line-mode 1)
 
 ;; Smooth scrolling
 (setq scroll-conservatively 10
