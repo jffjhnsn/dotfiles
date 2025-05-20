@@ -174,7 +174,7 @@
   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
 
 (setq org-todo-keywords
-      '((sequence "TODO" "STARTED" "WAITING" "|" "DONE" "CANCELED")))
+      '((sequence "TODO" "NEXT" "STARTED" "WAIT" "|" "DONE" "CANCELED")))
 
 (setq org-todo-keyword-faces
       '(("TODO" . "red")
