@@ -263,15 +263,23 @@
 (defun joj/acta-magit-status ()
   "Open a Magit status buffer for the  ~/dev/automated-customer-text-analyzer repo."
   (interactive)
-  (magit-status-setup-buffer (expand-file-name "~/dev/automated-customer-text-analyzer/")))
+  (magit-status-setup-buffer (expand-file-name "~/zse/automated-customer-text-analyzer/")))
 (global-set-key (kbd "C-c g a") #'joj/acta-magit-status)
 
 
 (defun joj/case-cruncher-magit-status ()
   "Open a Magit status buffer for the ~/dev/cuca-case-cruncher repo."
   (interactive)
-  (magit-status-setup-buffer (expand-file-name "~/dev/cuca-case-cruncher/")))
+  (magit-status-setup-buffer (expand-file-name "~/zse/cuca-case-cruncher/")))
 (global-set-key (kbd "C-c g c") #'joj/case-cruncher-magit-status)
+
+
+(defun joj/cxih-magit-status ()
+  "Open a Magit status buffer for the ~/dev/cx_intelligence_hub repo."
+  (interactive)
+  (magit-status-setup-buffer (expand-file-name "~/zse/cx_intelligence_hub/")))
+(global-set-key (kbd "C-c g i") #'joj/cxih-magit-status)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
