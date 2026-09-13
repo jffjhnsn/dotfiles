@@ -1,5 +1,10 @@
 ;; Emacs configuration -*- lexical-binding: t; -*-
 
+;; Server (enables emacsclient)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; Custom variables
 (defvar joj/default-font-size 140)
 (defvar joj/default-variable-font-size 140)
@@ -7,6 +12,8 @@
 
 ;; Initialize package sources
 (require 'package)
+
+(setq package-install-upgrade-built-in t)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
@@ -18,6 +25,11 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :config
+  (exec-path-from-shell-initialize))
 
 ;; Core settings
 (setq inhibit-startup-message t
@@ -296,9 +308,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb" default))
+   '("f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb"
+     default))
  '(package-selected-packages
-   '(avy ledger-mode magit org-roam which-key use-package org-bullets ivy-rich helpful doom-themes doom-modeline counsel)))
+   '(avy counsel doom-modeline doom-themes exec-path-from-shell helpful
+	 ivy-rich ledger-mode magit org-bullets org-roam use-package
+	 which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
