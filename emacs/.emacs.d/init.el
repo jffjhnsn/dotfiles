@@ -1,3 +1,5 @@
+;; Emacs configuration -*- lexical-binding: t; -*-
+
 ;; Custom variables
 (defvar joj/default-font-size 140)
 (defvar joj/default-variable-font-size 140)
@@ -261,24 +263,31 @@
 (global-set-key (kbd "C-c g d") #'joj/dotfiles-magit-status)
 
 (defun joj/acta-magit-status ()
-  "Open a Magit status buffer for the  ~/dev/automated-customer-text-analyzer repo."
+  "Open a Magit status buffer for the  ~/zse/automated-customer-text-analyzer repo."
   (interactive)
   (magit-status-setup-buffer (expand-file-name "~/zse/automated-customer-text-analyzer/")))
 (global-set-key (kbd "C-c g a") #'joj/acta-magit-status)
 
 
 (defun joj/case-cruncher-magit-status ()
-  "Open a Magit status buffer for the ~/dev/cuca-case-cruncher repo."
+  "Open a Magit status buffer for the ~/zse/cuca-case-cruncher repo."
   (interactive)
   (magit-status-setup-buffer (expand-file-name "~/zse/cuca-case-cruncher/")))
 (global-set-key (kbd "C-c g c") #'joj/case-cruncher-magit-status)
 
 
 (defun joj/cxih-magit-status ()
-  "Open a Magit status buffer for the ~/dev/cx_intelligence_hub repo."
+  "Open a Magit status buffer for the ~/zse/cx_intelligence_hub repo."
   (interactive)
   (magit-status-setup-buffer (expand-file-name "~/zse/cx_intelligence_hub/")))
 (global-set-key (kbd "C-c g i") #'joj/cxih-magit-status)
+
+
+(defun joj/za-magit-status ()
+  "Open a Magit status buffer for the ~/zse/zalando-assistant repo."
+  (interactive)
+  (magit-status-setup-buffer (expand-file-name "~/zse/zalando-assistant/")))
+(global-set-key (kbd "C-c g z") #'joj/za-magit-status)
 
 
 (custom-set-variables
