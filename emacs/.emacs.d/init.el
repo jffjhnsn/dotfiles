@@ -178,6 +178,30 @@
   ;; assuming this line will remain current forever.
   (setq gptel-model 'gpt-5.6-luna))
 
+(use-package agent-shell
+  :commands (agent-shell
+             agent-shell-anthropic-start-claude-code
+             agent-shell-send-dwim
+             agent-shell-switch-buffer
+             agent-shell-new-worktree-shell)
+  :init
+  (define-key joj/ai-map (kbd "a") #'agent-shell)
+  (define-key joj/ai-map (kbd "c") #'agent-shell-anthropic-start-claude-code)
+  (define-key joj/ai-map (kbd "d") #'agent-shell-send-dwim)
+  (define-key joj/ai-map (kbd "w") #'agent-shell-new-worktree-shell)
+  :config
+  ;; Claude is the normal/default coding agent.
+  (setq agent-shell-preferred-agent-config 'claude-code)
+  ;; Reuse the existing Claude Code credential resolution (apiKeyHelper /
+  ;; login session) rather than storing an API key here.
+  (setq agent-shell-anthropic-authentication
+        (agent-shell-anthropic-make-authentication :login t))
+  ;; Give the ACP subprocess the same environment as Emacs.
+  (setq agent-shell-anthropic-claude-environment
+        (agent-shell-make-environment-variables :inherit-env t))
+  ;; Resuming a session should not replay a giant transcript by default.
+  (setq agent-shell-session-restore-verbosity 'minimal))
+
 ;; Org Mode
 
 (defun joj/org-font-setup ()
@@ -337,9 +361,10 @@
    '("f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb"
      default))
  '(package-selected-packages
-   '(avy counsel doom-modeline doom-themes exec-path-from-shell gptel
-	 helpful ivy-rich ledger-mode magit org-bullets org-roam
-	 use-package which-key)))
+   '(agent-shell avy counsel doom-modeline doom-themes
+		 exec-path-from-shell gptel helpful ivy-rich
+		 ledger-mode magit org-bullets org-roam use-package
+		 which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
