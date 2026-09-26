@@ -152,6 +152,13 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
+;; AI
+(define-prefix-command 'joj/ai-map)
+(global-set-key (kbd "C-c a") #'joj/ai-map)
+(with-eval-after-load 'which-key
+  (which-key-add-key-based-replacements
+    "C-c a" "AI"))
+
 ;; Org Mode
 
 (defun joj/org-font-setup ()
