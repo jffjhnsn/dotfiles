@@ -159,6 +159,25 @@
   (which-key-add-key-based-replacements
     "C-c a" "AI"))
 
+(use-package gptel
+  :commands (gptel
+             gptel-send
+             gptel-rewrite
+             gptel-menu
+             gptel-openai-oauth-login)
+  :init
+  (define-key joj/ai-map (kbd "g") #'gptel)
+  (define-key joj/ai-map (kbd "s") #'gptel-send)
+  (define-key joj/ai-map (kbd "r") #'gptel-rewrite)
+  (define-key joj/ai-map (kbd "m") #'gptel-menu)
+  :config
+  (setq gptel-backend
+        (gptel-make-openai-oauth "ChatGPT"))
+  ;; Pick a valid current ChatGPT OAuth model.
+  ;; Verify the available models when implementing this rather than
+  ;; assuming this line will remain current forever.
+  (setq gptel-model 'gpt-5.6-luna))
+
 ;; Org Mode
 
 (defun joj/org-font-setup ()
@@ -318,9 +337,9 @@
    '("f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb"
      default))
  '(package-selected-packages
-   '(avy counsel doom-modeline doom-themes exec-path-from-shell helpful
-	 ivy-rich ledger-mode magit org-bullets org-roam use-package
-	 which-key)))
+   '(avy counsel doom-modeline doom-themes exec-path-from-shell gptel
+	 helpful ivy-rich ledger-mode magit org-bullets org-roam
+	 use-package which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
