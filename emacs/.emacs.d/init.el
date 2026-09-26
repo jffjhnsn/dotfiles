@@ -1,3 +1,10 @@
+;; Emacs configuration -*- lexical-binding: t; -*-
+
+;; Server (enables emacsclient)
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; Custom variables
 (defvar joj/default-font-size 140)
 (defvar joj/default-variable-font-size 140)
@@ -5,6 +12,8 @@
 
 ;; Initialize package sources
 (require 'package)
+
+(setq package-install-upgrade-built-in t)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
@@ -16,6 +25,11 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :config
+  (exec-path-from-shell-initialize))
 
 ;; Core settings
 (setq inhibit-startup-message t
@@ -261,24 +275,31 @@
 (global-set-key (kbd "C-c g d") #'joj/dotfiles-magit-status)
 
 (defun joj/acta-magit-status ()
-  "Open a Magit status buffer for the  ~/dev/automated-customer-text-analyzer repo."
+  "Open a Magit status buffer for the  ~/zse/automated-customer-text-analyzer repo."
   (interactive)
   (magit-status-setup-buffer (expand-file-name "~/zse/automated-customer-text-analyzer/")))
 (global-set-key (kbd "C-c g a") #'joj/acta-magit-status)
 
 
 (defun joj/case-cruncher-magit-status ()
-  "Open a Magit status buffer for the ~/dev/cuca-case-cruncher repo."
+  "Open a Magit status buffer for the ~/zse/cuca-case-cruncher repo."
   (interactive)
   (magit-status-setup-buffer (expand-file-name "~/zse/cuca-case-cruncher/")))
 (global-set-key (kbd "C-c g c") #'joj/case-cruncher-magit-status)
 
 
 (defun joj/cxih-magit-status ()
-  "Open a Magit status buffer for the ~/dev/cx_intelligence_hub repo."
+  "Open a Magit status buffer for the ~/zse/cx_intelligence_hub repo."
   (interactive)
   (magit-status-setup-buffer (expand-file-name "~/zse/cx_intelligence_hub/")))
 (global-set-key (kbd "C-c g i") #'joj/cxih-magit-status)
+
+
+(defun joj/za-magit-status ()
+  "Open a Magit status buffer for the ~/zse/zalando-assistant repo."
+  (interactive)
+  (magit-status-setup-buffer (expand-file-name "~/zse/zalando-assistant/")))
+(global-set-key (kbd "C-c g z") #'joj/za-magit-status)
 
 
 (custom-set-variables
@@ -287,9 +308,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb" default))
+   '("f91395598d4cb3e2ae6a2db8527ceb83fed79dbaf007f435de3e91e5bda485fb"
+     default))
  '(package-selected-packages
-   '(avy ledger-mode magit org-roam which-key use-package org-bullets ivy-rich helpful doom-themes doom-modeline counsel)))
+   '(avy counsel doom-modeline doom-themes exec-path-from-shell helpful
+	 ivy-rich ledger-mode magit org-bullets org-roam use-package
+	 which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
